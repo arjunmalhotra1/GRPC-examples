@@ -1,0 +1,21 @@
+/*
+I had to:
+1. option go_package = "./"; 
+2. "Run" protoc -I echo echo/echo.proto --go-grpc_out=echo 
+3. "Then Run" protoc -I echo echo/echo.proto --go_out=echo
+*/
+
+syntax = "proto3";
+option go_package = "./";
+
+service EchoServer {
+    rpc Echo(EchoRequest)returns(EchoResponse){}
+}
+
+message EchoRequest {
+    string message = 1;
+}
+
+message EchoResponse {
+    string response = 1;
+}
